@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>ARGUABLY USELESS WEATHER FORECAST</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+  </head>
+  
+  <body>
+    <div class="flex-container">
+      <div id="map">
+        <button id="comparison" class="button_shadow" onclick="OpenOrClose()">
+          <img id="comp_img" src="./imgs/pin.png" alt="location-pin" />
+        </button>
+      </div>
+
+      <div id="mySidebar" class="sidebar">
+        <div class="chart-container">
+          <canvas id="temperature_chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="./chart.js"></script>
+    <script src="./map.js"></script>
+    <script src="./functions.js"></script>
+  </body>
+
+</html>
+
+

@@ -1,0 +1,27 @@
+{
+  "name": "oval-device-sublet-7ib0i",
+  "productName": "oval-device-sublet-7ib0i",
+  "description": "My Electron application description",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "hello",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "22.0.0"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "./imgs",
+        "to": "imgs"
+      }
+    ],
+    "files": [
+      "**/*"
+    ]
+  }
+}
