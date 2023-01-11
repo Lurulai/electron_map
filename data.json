@@ -14,7 +14,13 @@
         39.973,
         72.64],
         "windspeed": [113, 98, 79, 85, 114, 42, 58, 43, 32, 30, 29, 46],
-        "color": "#FF965D"
+        "color": "#FF965D",
+        "street": "Jupiterstraat",
+        "zipcode": "7342 SJ",
+        "sensor_info": {
+          "source id": "47d34",
+          "bandwidth": "533 mbps"
+        }
       }
   ,
   "52.288,6.646":
@@ -32,27 +38,51 @@
         80.665,
         81.807],
         "windspeed": [109, 70, 90, 19, 26, 17, 93, 109, 82, 105, 115, 49],
-        "color": "#FFE75D"
+        "color": "#FFE75D",
+        "street": "Kerkstraat",
+        "zipcode": "7143 AD",
+        "sensor_info": {
+          "source id": "ab384j",
+          "bandwidth": "121 mbps"
+        }
       }
   ,
   "52.215,6.839":
       {
         "temp": [-39.874, 81.971, -13.359, 13.138, 52.602, 18.948, 15.256, -54.083, 8.603, 69.349, 65.457, -0.884],
         "windspeed": [81, 52, 81, 106, 12, 67, 71, 105, 106, 39, 70, 51],
-        "color": "#C6FF5D"
+        "color": "#C6FF5D",
+        "street": "M.H. Tromplaan",
+        "zipcode": "7672 PS",
+        "sensor_info": {
+          "source id": "7hf833",
+          "bandwidth": "44 mbps"
+        }
       }
   ,
   "52.322,7.012":
       {
         "temp": [-5.904, 86.249, 42.091, -38.929, -58.1, 26.556, 27.884, 3.623, 57.392, -42.131, 34.443, 77.541],
         "windspeed": [77, 17, 44, 116, 11, 83, 16, 117, 66, 12, 10, 85],
-        "color": "#5DFFE7"
+        "color": "#5DFFE7",
+        "street": "Jossink Kolkweg",
+        "zipcode": "8008 YS",
+        "sensor_info": {
+          "source id": "h387bm",
+          "bandwidth": "287 mbps"
+        }
       }
   ,
   "52.302,6.895":
       {
         "temp": [5.556, 35.914, 2.155, 54.302, -2.899, -55.207, 29.301, 7.922, -19.015, 85.48, -38.527, 78.29],
         "windspeed": [22, 88, 22, 13, 89, 59, 20, 25, 54, 21, 26, 104],
-        "color": "#C25DFF"
+        "color": "#C25DFF",
+        "street": "Asterstraat",
+        "zipcode": "7531 ZS",
+        "sensor_info": {
+          "source id": "3476aa",
+          "bandwidth": "74 mbps"
+        }
       }
 }
