@@ -19,7 +19,8 @@
         "zipcode": "7342 SJ",
         "sensor_info": {
           "source id": "47d34",
-          "bandwidth": "533 mbps"
+          "bandwidth": "533 mbps",
+          "signal_strength": "2"
         }
       }
   ,
@@ -43,7 +44,8 @@
         "zipcode": "7143 AD",
         "sensor_info": {
           "source id": "ab384j",
-          "bandwidth": "121 mbps"
+          "bandwidth": "121 mbps",
+          "signal_strength": "1"
         }
       }
   ,
@@ -56,7 +58,8 @@
         "zipcode": "7672 PS",
         "sensor_info": {
           "source id": "7hf833",
-          "bandwidth": "44 mbps"
+          "bandwidth": "44 mbps",
+          "signal_strength": "3"
         }
       }
   ,
@@ -69,7 +72,8 @@
         "zipcode": "8008 YS",
         "sensor_info": {
           "source id": "h387bm",
-          "bandwidth": "287 mbps"
+          "bandwidth": "287 mbps",
+          "signal_strength": "0"
         }
       }
   ,
@@ -82,7 +86,8 @@
         "zipcode": "7531 ZS",
         "sensor_info": {
           "source id": "3476aa",
-          "bandwidth": "74 mbps"
+          "bandwidth": "74 mbps",
+          "signal_strength": "3"
         }
       }
 }

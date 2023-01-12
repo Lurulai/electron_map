@@ -79,9 +79,9 @@ function onMarkerClick(e) {
                 direction: 'top',
                 offset: [0, -20]
             })
-                .setLatLng(e.latlng)
-                .setContent(json[clickedMarker].street + ", " + json[clickedMarker].zipcode)
-                .addTo(map);
+            .setLatLng(e.latlng)
+            .setContent(json[clickedMarker].street + ", " + json[clickedMarker].zipcode)
+            .addTo(map);
 // Add the dataset to the chart(s).
             let dataset = {
                 label: json[clickedMarker].zipcode,
@@ -98,34 +98,40 @@ function onMarkerClick(e) {
             direction: 'top',
             offset: [0, -20]
         })
-                .setLatLng(e.latlng)
-                .setContent(generateContent(clickedMarker))
-                .addTo(map);
+        .setLatLng(e.latlng)
+        .setContent(generateContent(clickedMarker))
+        .addTo(map);
     }
 }
 
+
 function generateContent(coords) {
-    let content = "";
-    content += "<html>";
+    let content = ""
+    content += "<html>"
 
     content += "<style>" +
-    ".address { font-weight: bold; }" +
-    ".labels { font-weight: bold; }" +
-    ".info { font-weight: normal; }"
-    + "</style>";
+        ".address { font-weight: bold; }" +
+        ".labels { font-weight: bold; }" +
+        ".info { font-weight: normal; }" + 
+        "#signal_img { height: 15px; width: 15px; }" +
+        "</style>"
 
-    content += "<span class='address'>"+json[coords].street + ", " + json[coords].zipcode +"</span>";
+    content += "<span class='address'>"+json[coords].street + ", " + json[coords].zipcode +"</span>"
     content += "<br />"
 
+    // TODO: Hard-code these labels from the JSON file that will be received.
     for (let label in json[coords]['sensor_info']) {
-        content += "<span class='labels'>" + label + ": </span>";
-        content += "<span class='info'>" + json[coords]['sensor_info'][label] + "</span>";
+        content += "<span class='labels'>" + label + ": </span>"
+        content += "<span class='info'>" + json[coords]['sensor_info'][label] + "</span>"
         content += "<br />"
     }
     
     content += "<span class='signal'>signal: </span>";
+    content += "<img id=\"signal_img\" src=\"" + 
+        signalStrengthImage(json[coords]['sensor_info'].signal_strength) + 
+        "\" alt=\"no-signal\"/>"
+
     content += "<br />"
 
-    content += "</html>";
     return content;
 }
