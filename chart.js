@@ -1,16 +1,22 @@
-// Generate number from 1 to 24 skip 2
+// Generate number from 1 to 24, skip 2.
 let labels = [];
+
+// Generate x-axis labels for the chart.
 for (let i = 0; i < 24; i += 2) {
     num = i.toString();
     while (num.length < 2) num = "0" + num;
     labels.push(num + ":00");
 } 
+
+// The data for the chart, including the labels.
 let data = {
     labels: labels,
     datasets: []
   };
 
+
 const temperature_chart = document.getElementById('temperature_chart');
+
 
 let chart = new Chart(temperature_chart, {
     type: 'line',

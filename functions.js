@@ -1,7 +1,8 @@
 map_button = document.getElementById('comparison');
 
+
 map_button.addEventListener('click', (e) => {
-// add a class to the button
+// Add a class to the button. This is used to change the button's appearance.
     map_button.classList.add('button_active');
 // change the image of the img tag under the button to the selected image
     if (document.getElementById('comp_img').src.includes('imgs/pin-selected.png')) {
@@ -30,15 +31,10 @@ map_button.addEventListener('click', (e) => {
 });
 
 
-// map_button.addEventListener('mouseup', (e) => {
-// // remove the class from the button
-//     map_button.classList.remove('button_active');
-//     map_button.classList.add('button_shadow');
-// });
-
-
+// Controls when the sidebar opens and closes.
 function OpenOrClose() {
     document.getElementById("mySidebar").classList.toggle("open");
     document.getElementById("map").classList.toggle("open");
+// This is what gives a nice "scoot" animation to the left when the sidebar opens.
     window.setTimeout(function(){window.map.invalidateSize(true);}, 500);
 }
