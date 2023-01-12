@@ -120,6 +120,20 @@ body {
   align-items: center;
 }
 
+.leaflet-tooltip {
+  background-color: rgb(0, 0, 0, 0.7);
+  border: 0px solid rgb(0, 0, 0, 0.7);
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 12px;
+}
+
+.leaflet-tooltip-top:before {
+  border-top-color: rgb(0, 0, 0, 0.7);
+  margin-bottom: -11.75555px;
+}
+
 @media screen and (max-width: 1500px) {
   #mySidebar.open{
     width: 33vw;
