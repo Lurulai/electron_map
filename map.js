@@ -65,10 +65,12 @@ function onMarkerClick(e) {
             e.target.setIcon(unselectedIcon);
 // Remove the dataset from the chart(s).
             for (let i = 0; i < data.datasets.length; i++) {
-                if (data.datasets[i].label == clickedMarker) {
-                    data.datasets.splice(i, 1);
-                    chart.update();
-                    break;
+                for (let coords in json) {
+                    if (data.datasets[i].label == json[coords].zipcode) {
+                        data.datasets.splice(i, 1);
+                        chart.update();
+                        break;
+                    }
                 }
             }
         } else {
