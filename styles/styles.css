@@ -1,0 +1,249 @@
+/* styles.css */
+
+/* Debugging purposes only. Uncomment when needed. */ 
+/* * {
+  outline: 1px solid red;
+} */
+
+/* _______________________________________________________ */
+
+
+html,
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-header {
+  height: 5vh;
+}
+
+#map {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    transition: margin-right 0.5s ease-in-out;
+}
+
+#map.open{
+  margin-right: 22vw;
+}
+
+
+/* _______________________________________________________ */
+
+
+#comparison {
+    /* positioning */
+    position: absolute;
+    bottom: 5%;
+    z-index: 999;
+
+    /* size */
+    width: 9vw;
+    height: 9vw; 
+    padding: 10px;
+    border-radius: 25%;
+
+    /* maximum and minimum size */
+    max-width: 80px;
+    max-height: 80px;
+    min-width: 70px;
+    min-height: 70px;
+
+    /* styling */
+    background-color: rgb(247, 247, 247);
+    border-color: #e0e0e0;
+    border-style: solid;
+    transition: all 0.2s ease-in-out;
+}
+
+/* marker image inside button */
+#comparison img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* shadow of the square button */
+.button_shadow {
+  box-shadow: 0 3px 2px 0 rgb(51, 51, 51, 0.5);
+  cursor: pointer;
+}
+
+.button_active {
+  transform: translateY(4px);
+}
+
+
+/* _______________________________________________________ */
+
+
+#sidebar.open {
+  width: 250px;
+}
+
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s ease-in-out;
+  
+  /* initial color of sidebar */
+  color: white;
+  transition: color 0.5s ease-in-out;
+}
+
+/* behaviour of sideba */
+.sidebar:hover {
+  color: rgb(0, 0, 0, 0.7);
+}
+
+/* sidebar when opened */
+#mySidebar.open {
+  width: 22vw;
+}
+
+/* area that holds the graphs */
+#mySidebar .graphs-container {
+  padding-top: 30px;
+  height: auto;
+}
+
+/* area that holds the legend WITHIN sidebar */
+#mySidebar .legend-container {
+  height: auto;
+}
+
+
+/* _______________________________________________________ */
+
+
+/* scroll-bar properties */
+.scroller::-webkit-scrollbar {
+  width: 10px;
+}
+.scroller::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.scroller::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  box-shadow: inset 0 0 0 20px;
+  
+}
+.scroller:hover::-webkit-scrollbar-thumb {
+  visibility:visible;
+}
+
+
+/* _______________________________________________________ */
+
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.chart-container {
+  position: relative;
+  width: 95%;
+  height: 30vh;
+  padding-left: 2.5%;
+  padding-bottom: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* properties of container holding legend */
+.legend-container {
+  color: black;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  height: auto;
+  background-color: white;
+}
+
+
+/* _______________________________________________________ */
+
+
+.leaflet-popup-content-wrapper {
+  background-color: rgb(0, 0, 0, 0.7);
+  border: 0px solid rgb(0, 0, 0, 0.7);
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 12px;
+  width: 200px;
+  height: 100px;
+  perspective: 200px;
+}
+
+.leaflet-popup-tip {
+  background-color: rgb(0, 0, 0, 0.7);
+}
+
+/* .leaflet-popup-top:before {
+  border-top-color: rgb(0, 0, 0, 0.7);
+  margin-bottom: -11.75555px;
+} */
+
+
+/* _______________________________________________________ */
+
+
+/* when desktop window is resized, sidebar behaviour */
+@media screen and (max-width: 1500px) {
+  #mySidebar.open{
+    width: 33vw;
+  }
+  
+  #map.open{
+    margin-right: 33vw;
+  }
+
+  .sidebar-header {
+    height: 8vh;
+  }
+}
+
+/* _______________________________________________________ */
+
+
+/* mobile version will be below */
+#flip-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+#flip-container figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+#flip-container .front {
+}
+
+#flip-container .back {
+  transform: rotateY( 180deg);
+}
+
+#flip-container.flipped {
+  transform: rotateY( 180deg);
+}
