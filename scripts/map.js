@@ -1,3 +1,5 @@
+// TODO: Sort out the functions into corresponding files and organize the code.
+
 const path = require('path')
 let json = require('./content/data.json');
 

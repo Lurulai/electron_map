@@ -17,7 +17,7 @@ body {
 }
 
 .sidebar-header {
-  height: 5vh;
+  height: 7vh;
 }
 
 #map {
@@ -93,7 +93,6 @@ body {
   right: 0;
   background-color: white;
   overflow-x: hidden;
-  transition: 0.5s ease-in-out;
   
   /* initial color of sidebar */
   color: white;
@@ -119,6 +118,21 @@ body {
 /* area that holds the legend WITHIN sidebar */
 #mySidebar .legend-container {
   height: auto;
+}
+
+
+/* _______________________________________________________ */
+
+
+#top_panel {
+  z-index: 1;
+  position: absolute;
+}
+
+
+#bottom_panel {
+  z-index: 0;
+  position: absolute;
 }
 
 
@@ -201,24 +215,6 @@ body {
 /* _______________________________________________________ */
 
 
-/* when desktop window is resized, sidebar behaviour */
-@media screen and (max-width: 1500px) {
-  #mySidebar.open{
-    width: 33vw;
-  }
-  
-  #map.open{
-    margin-right: 33vw;
-  }
-
-  .sidebar-header {
-    height: 8vh;
-  }
-}
-
-/* _______________________________________________________ */
-
-
 /* mobile version will be below */
 #flip-container {
   width: 100%;
@@ -237,8 +233,8 @@ body {
   backface-visibility: hidden;
 }
 
-#flip-container .front {
-}
+/* #flip-container .front {
+} */
 
 #flip-container .back {
   transform: rotateY( 180deg);
@@ -246,4 +242,23 @@ body {
 
 #flip-container.flipped {
   transform: rotateY( 180deg);
+}
+
+
+/* _______________________________________________________ */
+
+
+/* when desktop window is resized, sidebar behaviour */
+@media screen and (max-width: 1500px) {
+  #mySidebar.open{
+    width: 36vw;
+  }
+  
+  #map.open{
+    margin-right: 36vw;
+  }
+
+  .sidebar-header {
+    height: 9vh;
+  }
 }
