@@ -133,6 +133,54 @@ let chart = new Chart(temperature_chart, {
     plugins: [htmlLegendPlugin]
 });
 
+
+const data_chart = document.getElementById('data_chart');
+
+let d_chart = new Chart(data_chart, {
+  type: 'line',
+  data: data,
+  options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      tension: 0.3,
+      interaction: {
+          intersect: false,
+          mode: 'index',
+        },
+      plugins: {
+              tooltip: {
+                  callbacks: {
+                      title: function(context) {
+                          return "Time: " + context[0].label;
+                      },
+
+                      label: function(context) {
+                          return context.dataset.label + ": " + context.parsed.y + ' \u00B0C';
+                      }
+                  }
+              },
+              legend: {
+                  display: false
+              },
+              title: {
+                  display: true,
+                  text: 'BANDWIDTH'
+              },
+              htmlLegend: {
+                  containerID: 'legend'
+              }
+          },
+      scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  },
+  plugins: [htmlLegendPlugin]
+});
+
+
+// TODO: Integrate function that will fetch data from the server.
 // async function fetchData() {
 //     // Will send a GET request to the server in the future.
 //     const data = await fetch('data.json');
