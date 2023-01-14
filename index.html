@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 
 <html>
-
   <head>
     <title>ARGUABLY USELESS WEATHER FORECAST</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
      crossorigin=""/>
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/toggle.css" />
+
   </head>
   
+<!-- --------------------------------------------------------------------------- -->
+
   <body>
     <div class="flex-container">
       <div id="map">
@@ -20,35 +23,47 @@
       </div>
 
       <div id="mySidebar" class="sidebar scroller">
-        <div class="chart-container">
-          <canvas id="temperature_chart"></canvas>
+        
+        <div class = "sidebar-header">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
         </div>
-        <div class="chart-container">
-          <canvas id="temperature_chart"></canvas>
+
+
+        <div class="graphs-container">
+          <div class="chart-container">
+            <canvas id="temperature_chart"></canvas>
+          </div>
         </div>
-        <div class="chart-container">
-          <canvas id="temperature_chart"></canvas>
+
+
+        <div class="legend-container">
+          <div id="legend"></div>
         </div>
-        <div class="chart-container">
-          <canvas id="temperature_chart"></canvas>
-        </div>
-        <div class="chart-container">
-          <canvas id="temperature_chart"></canvas>
-        </div>
+
+
+        <span style="position: center; color: black;">
+          <a href="https://leafletjs.com">Leaflet</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, 
+          <a href="https://agafonkin.com">Volodymyr Agafonkin</a>
+        </span>
+
       </div>
     </div>
+
+<!-- --------------------------------------------------------------------------- -->
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <script src="./signal-strength.js"></script>
-    <script src="./chart.js"></script>
-    <script src="./map.js"></script>
-    <script src="./functions.js"></script>
-  </body>
+    <script src="./scripts/signal-strength.js"></script>
+    <script src="./scripts/chart.js"></script>
+    <script src="./scripts/map.js"></script>
+    <script src="./scripts/functions.js"></script>
 
+  </body>
 </html>
 
 

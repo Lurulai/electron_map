@@ -1,5 +1,5 @@
 const path = require('path')
-let json = require('./data.json');
+let json = require('./content/data.json');
 
 
 var corner1 = L.latLng(52.378, 6.549),
@@ -58,26 +58,30 @@ function addMarker(lat, lng) {
 
 
 function onMarkerClick(e) {
-    clickedMarker = e.latlng.lat+","+e.latlng.lng;
+    clickedMarker = e.latlng.lat + "," + e.latlng.lng;
+
     if (document.getElementById("mySidebar").classList.contains("open")) {
         if (e.target.getIcon() == selectedIcon) {
 // When a marker is unselected...
             e.target.setIcon(unselectedIcon);
 // Remove the dataset from the chart(s).
             for (let i = 0; i < data.datasets.length; i++) {
-                for (let coords in json) {
-                    if (data.datasets[i].label == json[coords].zipcode) {
-                        data.datasets.splice(i, 1);
-                        chart.update();
-                        break;
-                    }
+                if (data.datasets[i].label == json[clickedMarker].zipcode) {
+                    data.datasets.splice(i, 1);
+                    chart.update();
+                    break;
                 }
             }
         } else {
+// This check will still allow users to deselect pins.
+            if (data.datasets.length == 4) {
+                alert("You can only compare two locations at a time. Please deselect one of the locations.");
+                return;
+            }
 // When a marker is selected...
             e.target.setIcon(selectedIcon);
 // Tooltip that shows the address of the selected marker.
-            L.tooltip({
+            var tp = L.tooltip({
                 direction: 'top',
                 offset: [0, -20]
             })
@@ -96,13 +100,16 @@ function onMarkerClick(e) {
         }    
     } else {
 // Tooltip that shows the address of the selected marker.
-        L.tooltip({
-            direction: 'top',
+        var tp = L.popup({
+            // direction: 'top',
             offset: [0, -20]
         })
         .setLatLng(e.latlng)
         .setContent(generateContent(clickedMarker))
         .addTo(map);
+        var el = tp.getElement();
+        el.style.pointerEvents = 'auto';
+        el.addEventListener('click', tooltipClick);
     }
 }
 
@@ -118,6 +125,8 @@ function generateContent(coords) {
         "#signal_img { height: 15px; width: 15px; }" +
         "</style>"
 
+    content += "<div id='flip-container'>"
+    content += "<figure class='front'>"
     content += "<span class='address'>"+json[coords].street + ", " + json[coords].zipcode +"</span>"
     content += "<br />"
 
@@ -128,12 +137,36 @@ function generateContent(coords) {
         content += "<br />"
     }
     
-    content += "<span class='signal'>signal: </span>";
     content += "<img id=\"signal_img\" src=\"" + 
         signalStrengthImage(json[coords]['sensor_info'].signal_strength) + 
         "\" alt=\"no-signal\"/>"
 
     content += "<br />"
+    content += "</figure>"
+    content += "<figure class='back'>"
+    content += "<span class='address'>"+json[coords].street + ", " + json[coords].zipcode +"</span>"
+    content += "<br />"
+    content += "<span class='labels'>Temperature: </span>"
+    content += "<span class='info'>" + json[coords].temp[0] + "°C</span>"
+    content += "<br />"
+    content += "</figure>"
+    content += "</div>"
 
     return content;
+}
+
+function tooltipClick(e) {
+    document.getElementById("flip-container").classList.toggle('flipped')
+}
+
+function signalStrengthImage(signal) {
+    console.log(signal)
+    if (signal == 1) {
+        return 'imgs/connect-1bar.png';
+    } else if (signal == 2) {
+        return 'imgs/connect-2bar.png';
+    } else if (signal == 3) {
+        return 'imgs/connect-3bar.png';
+    }
+    return 'imgs/connect-none.png';
 }
