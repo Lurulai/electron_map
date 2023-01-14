@@ -38,3 +38,34 @@ function OpenOrClose() {
 // This is what gives a nice "scoot" animation to the left when the sidebar opens.
     window.setTimeout(function(){window.map.invalidateSize(true);}, 500);
 }
+
+
+// ------------------------------
+
+datato_button = document.getElementById('to-data');
+
+datato_button.addEventListener('click', WeatherToData);
+
+function WeatherToData() {
+    // Button press down.
+    datato_button.classList.add('button_active');
+    datato_button.classList.remove('button_shadow');
+
+    if (document.getElementById('data-img').src.includes('imgs/weather.png')) {
+// DATA MODE should be here.
+        document.getElementById('data-img').src = 'imgs/data.png';
+        document.getElementById('top_panel').style.visibility='hidden';
+        document.getElementById('bottom_panel').style.visibility='visible';
+    } else {
+// WEATHER MODE should be here.
+        document.getElementById('data-img').src = 'imgs/weather.png';
+        document.getElementById('top_panel').style.visibility='visible';
+        document.getElementById('bottom_panel').style.visibility='hidden';
+    }
+
+    // Button release - reset state.
+        window.setTimeout(function() {
+            datato_button.classList.remove('button_active');
+            datato_button.classList.add('button_shadow');
+        }, 100);
+}
