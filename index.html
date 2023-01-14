@@ -26,15 +26,27 @@
         
         <div class = "sidebar-header">
           <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
+            <button id="to-data" class="button_shadow">
+              <img id="data-img" src="./imgs/data.png" alt="antenna" />
+            </button>
           </label>
         </div>
 
 
-        <div class="graphs-container">
-          <div class="chart-container">
-            <canvas id="temperature_chart"></canvas>
+        <!-- FIXME: Overlay two divs on top of each other. -->
+        <div id="top_panel" style="visibility: hidden;">
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="data_chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div id="bottom_panel">
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="temperature_chart"></canvas>
+            </div>
           </div>
         </div>
 
@@ -44,10 +56,12 @@
         </div>
 
 
-        <span style="position: center; color: black;">
-          <a href="https://leafletjs.com">Leaflet</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, 
-          <a href="https://agafonkin.com">Volodymyr Agafonkin</a>
-        </span>
+        <!-- <span style="position: center fixed; color: black; padding-top: 80px; display: flex; justify-content: center;">
+          <a href="https://leafletjs.com">Leaflet</a> 
+            &copy; 
+            <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>,
+            <a href="https://agafonkin.com">Volodymyr Agafonkin</a>
+        </span> -->
 
       </div>
     </div>
@@ -58,7 +72,6 @@
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./scripts/signal-strength.js"></script>
     <script src="./scripts/chart.js"></script>
     <script src="./scripts/map.js"></script>
     <script src="./scripts/functions.js"></script>
