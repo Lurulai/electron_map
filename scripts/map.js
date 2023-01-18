@@ -1,8 +1,10 @@
-// TODO: Sort out the functions into corresponding files and organize the code.
-
 const path = require('path')
+var fs = require('fs');
+
 let json = require('./content/data.json');
 
+var tooltip_front = fs.readFileSync(path.join(__dirname, "pages", "tooltip_front.html"), 'utf8');
+var tooltip_back = fs.readFileSync(path.join(__dirname, "pages", "tooltip_back.html"), 'utf8');
 
 var corner1 = L.latLng(52.378, 6.549),
     corner2 = L.latLng(52.186, 7.058),
@@ -103,8 +105,8 @@ function onMarkerClick(e) {
     } else {
 // Tooltip that shows the address of the selected marker.
         var tp = L.popup({
-            // direction: 'top',
-            offset: [0, -20]
+            offset: [0, -20],
+            closeButton: false
         })
         .setLatLng(e.latlng)
         .setContent(generateContent(clickedMarker))
@@ -120,37 +122,13 @@ function generateContent(coords) {
     let content = ""
     content += "<html>"
 
-    content += "<style>" +
-        ".address { font-weight: bold; }" +
-        ".labels { font-weight: bold; }" +
-        ".info { font-weight: normal; }" + 
-        "#signal_img { height: 15px; width: 15px; }" +
-        "</style>"
-
     content += "<div id='flip-container'>"
     content += "<figure class='front'>"
-    content += "<span class='address'>"+json[coords].street + ", " + json[coords].zipcode +"</span>"
-    content += "<br />"
-
-    // TODO: Hard-code these labels from the JSON file that will be received.
-    for (let label in json[coords]['sensor_info']) {
-        content += "<span class='labels'>" + label + ": </span>"
-        content += "<span class='info'>" + json[coords]['sensor_info'][label] + "</span>"
-        content += "<br />"
-    }
-    
-    content += "<img id=\"signal_img\" src=\"" + 
-        signalStrengthImage(json[coords]['sensor_info'].signal_strength) + 
-        "\" alt=\"no-signal\"/>"
-
-    content += "<br />"
+    content += tooltip_front
     content += "</figure>"
+
     content += "<figure class='back'>"
-    content += "<span class='address'>"+json[coords].street + ", " + json[coords].zipcode +"</span>"
-    content += "<br />"
-    content += "<span class='labels'>Temperature: </span>"
-    content += "<span class='info'>" + json[coords].temp[0] + "°C</span>"
-    content += "<br />"
+    content += tooltip_back
     content += "</figure>"
     content += "</div>"
 
@@ -159,6 +137,7 @@ function generateContent(coords) {
 
 function tooltipClick(e) {
     document.getElementById("flip-container").classList.toggle('flipped')
+    // TODO: Populate the tooltip only when on-click to avoid any overload or lag.
 }
 
 function signalStrengthImage(signal) {

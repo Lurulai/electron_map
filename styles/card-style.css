@@ -1,0 +1,252 @@
+/* _______________________________________________________ */
+
+.leaflet-popup-content-wrapper {
+  background-color: #313e45;
+  border-radius: 25px;
+  color: white;
+  font-size: 12px;
+  width: 412px;
+  height: 235px;
+  perspective: 200px;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  }
+  
+.leaflet-popup-content {
+  margin: -1px;
+  min-width: 100 px !important;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.leaflet-popup-tip {
+  background-color: #313e45;
+}
+
+.leaflet-tooltip {
+  background-color: #313e45;
+  border: 0px solid #313e45;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 12px;
+}
+
+.leaflet-tooltip-top:before {
+  border-top-color: #313e45;
+  margin-bottom: -11.75555px;
+}
+
+/* _______________________________________________________ */
+
+#flip-container .front .top-left {
+  height: 55%;
+  width: 45%;
+  padding: 10px 0 0 15px;
+  display: inline-block;
+}
+
+#flip-container .back .top {
+  height: 10%;
+  width: 100%;
+  padding: 10px 10px 10px 15px;
+  display: inline-block; 
+}
+
+#flip-container .front .top-right {
+  height: 55%;
+  width: 45%;
+  float: right;
+  padding: 10px 0 0 0;
+}
+
+#flip-container .back .middle {
+  height: 35%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 8px;
+}
+
+#flip-container .back .col {
+  height: 100%;
+  width: 50%;
+  display: inline-block;
+  padding: 0 10px 0 10px;
+}
+
+#flip-container .back .temp-icon {
+  font-size: 20px;
+  text-align: center;
+}
+
+#flip-container .front .bottom-left {
+  height: 40%;
+  width: 40%;
+  float: left;
+  margin: 0;
+  padding: 3px 0 0 15px;
+}
+
+#flip-container .back .bottom-left {
+  height: 35%;
+  width: 45%;
+  float: left;
+  padding: 5px 0 0 15px;
+}
+
+.bottom-right {
+  height: 40%;
+  width: 45%;
+  float: right;
+  padding: 5px 0 0 15px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Top-left Div CSS */
+
+#city {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+#day {
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 18px;
+}
+
+#date {
+  font-weight: 500;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+#time {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.top-left > a {
+  text-decoration: none;
+  color: white;
+}
+
+.top-left > a:hover {
+  color: #b0bec5;
+}
+
+
+/* Top-Right Div CSS */
+
+#weather-status {
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.top-right > img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 15px auto 0 auto;
+}
+
+
+/* Horizontal-Half-divider */
+
+.horizontal-half-divider {
+  width: 100%;
+  height: 3px;
+  background-color: #263238;
+}
+
+.vertical-half-divider {
+  width: 3px;
+  height: 39%;
+  background-color: #263238;
+  float: right;
+  display: block;
+  padding: 0;
+}
+
+
+/* Bottom-left CSS */
+
+#temperature,
+#celsius,
+#temp-divider {
+  display: inline;
+  vertical-align: middle;
+}
+
+#temperature {
+  font-size: 60px;
+  font-weight: 800;
+  margin-right: 5px;
+}
+
+
+/* Bottom-Right CSS */
+
+.other-details-key {
+  float: left;
+  font-size: 11px;
+  font-weight: 300;
+}
+
+.other-details-key > p {
+  margin: 2.5px;
+}
+
+.other-details-values {
+  float: left;
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 40px;
+}
+
+.other-details-values > p {
+  margin: 2.5px;
+}
+
+
+/* _______________________________________________________ */
+
+
+/* mobile version will be below */
+#flip-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+#flip-container figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+#flip-container .back {
+  transform: rotateY( 180deg);
+}
+
+#flip-container.flipped {
+  transform: rotateY( 180deg);
+}

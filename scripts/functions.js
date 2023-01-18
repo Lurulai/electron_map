@@ -54,13 +54,13 @@ function WeatherToData() {
     if (document.getElementById('data-img').src.includes('imgs/weather.png')) {
 // DATA MODE should be here.
         document.getElementById('data-img').src = 'imgs/data.png';
-        document.getElementById('top_panel').style.visibility='hidden';
-        document.getElementById('bottom_panel').style.visibility='visible';
+        document.getElementById('top_panel').style.display='none';
+        document.getElementById('bottom_panel').style.display='block';
     } else {
 // WEATHER MODE should be here.
         document.getElementById('data-img').src = 'imgs/weather.png';
-        document.getElementById('top_panel').style.visibility='visible';
-        document.getElementById('bottom_panel').style.visibility='hidden';
+        document.getElementById('top_panel').style.display='block';
+        document.getElementById('bottom_panel').style.display='none';
     }
 
     // Button release - reset state.
