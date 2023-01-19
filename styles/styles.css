@@ -99,6 +99,10 @@ body {
   transition: color 0.5s ease-in-out;
 }
 
+.sidebar.close {
+  width: 0;
+}
+
 /* behaviour of sidebar */
 .sidebar:hover {
   color: rgb(0, 0, 0, 0.7);

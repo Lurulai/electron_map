@@ -8,8 +8,8 @@ for (let sensor of available_sensors) {
     // create a new request object
     var request = new XMLHttpRequest();
     // set the request url
-    request.open('GET', 'http://192.168.1.157:5000/' + sensor, false);
-    // request.open('GET', 'http://34.141.179.166:8080/' + sensor, false);
+    // request.open('GET', 'http://192.168.1.157:5000/' + sensor, false);
+    request.open('GET', 'http://34.141.179.166:8080/' + sensor, false);
     // set the callback function and handle exceptions
     request.onerror = function() {
         console.log("Error fetching data");

@@ -51,6 +51,7 @@ map_button.addEventListener('click', (e) => {
 // Controls when the sidebar opens and closes.
 function OpenOrClose() {
     document.getElementById("mySidebar").classList.toggle("open");
+    document.getElementById("mySidebar").classList.toggle("close");
     document.getElementById("map").classList.toggle("open");
 // This is what gives a nice "scoot" animation to the left when the sidebar opens.
     window.setTimeout(function(){window.map.invalidateSize(true);}, 500);
