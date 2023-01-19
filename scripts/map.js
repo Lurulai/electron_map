@@ -106,7 +106,7 @@ function onMarkerClick(e) {
         } else {
 // This check will still allow users to deselect pins.
             if (temp_data.datasets.length == 4) {
-                alert("You can only compare two locations at a time. Please deselect one of the locations.");
+                alert("You can only compare four locations at a time. Please deselect one of the locations.");
                 return;
             }
 // When a marker is selected...
