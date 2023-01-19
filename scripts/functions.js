@@ -14,8 +14,25 @@ map_button.addEventListener('click', (e) => {
             marker.setIcon(unselectedIcon);
         }
 // remove all the datasets from the chart
-        data.datasets = [];
-        chart.update();
+        temp_data.datasets = [];
+        press_data.datasets = [];
+        humid_data.datasets = [];
+        light_data.datasets = [];
+        band_data.datasets = [];
+        spread_data.datasets = [];
+        freq_data.datasets = [];
+        rssi_data.datasets = [];
+        snr_data.datasets = [];
+// update the chart
+        t_chart.update();
+        p_chart.update();
+        h_chart.update();
+        l_chart.update();
+        b_chart.update();
+        s_chart.update();
+        f_chart.update();
+        r_chart.update();
+        snr_chart.update();
     } else {    
 // change the image to the selected image
 // comparison mode ON (or select)

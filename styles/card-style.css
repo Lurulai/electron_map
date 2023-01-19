@@ -103,6 +103,10 @@
   padding: 5px 0 0 15px;
 }
 
+img#signal-img {
+  width: 25px;
+}
+
 h1,
 h2,
 h3,
@@ -153,14 +157,14 @@ p {
   font-size: 12px;
   font-weight: 300;
   text-align: center;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .top-right > img {
   width: 80px;
   height: 80px;
   display: block;
-  margin: 15px auto 0 auto;
+  margin: 0 auto 0 auto;
 }
 
 
@@ -192,7 +196,7 @@ p {
 }
 
 #temperature {
-  font-size: 60px;
+  font-size: 52px;
   font-weight: 800;
   margin-right: 5px;
 }

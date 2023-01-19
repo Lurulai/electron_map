@@ -1,21 +1,74 @@
+var curr_date = new Date();
 // Generate number from 1 to 24, skip 2.
 let labels = [];
 
+let curr_hour = curr_date.getHours();
 // Generate x-axis labels for the chart.
-for (let i = 0; i < 24; i += 2) {
-    num = i.toString();
+// for (let i = curr_hour-2; i <= curr_hour+6; i++) {
+//     num = i.toString();
+//     while (num.length < 2) num = "0" + num;
+//     labels.push(num + ":00");
+// } 
+// Generate x-axis labels for the chart for previous 2 hours and next 6 hours from current time.
+for (let i = curr_hour-2; i <= curr_hour+6; i++) {
+    num = (i < 0 ? 24+i : i).toString();
     while (num.length < 2) num = "0" + num;
     labels.push(num + ":00");
-} 
+}
 
 // The data for the chart, including the labels.
-let data = {
+let temp_data = {
     labels: labels,
     datasets: []
-  };
+};
 
+// The data for the chart, including the labels.
+let press_data = {
+    labels: labels,
+    datasets: []
+};
 
-const temperature_chart = document.getElementById('temperature_chart');
+// The data for the chart, including the labels.
+let humid_data = {
+    labels: labels,
+    datasets: []
+};
+
+// The data for the chart, including the labels.
+let light_data = {
+    labels: labels,
+    datasets: []
+};
+
+// The data for the chart, including the labels.
+let band_data = {
+    labels: labels,
+    datasets: []
+};
+
+// The data for the chart, including the labels.
+let spread_data = {
+    labels: labels,
+    datasets: []
+};
+
+// The data for the chart, including the labels.
+let freq_data = {
+    labels: labels,
+    datasets: []
+};
+
+// The data for the chart, including the labels.
+let rssi_data = {
+    labels: labels,
+    datasets: []
+};
+
+// The data for the chart, including the labels.
+let snr_data = {
+    labels: labels,
+    datasets: []
+};
 
 // This is the blocks that create the legend for our graphs.
 // <block:plugin:0>
@@ -89,101 +142,61 @@ const getOrCreateLegendList = (chart, id) => {
   // </block:plugin>
   // End of blocks that create the legend for our graphs.
 
+let t_chart = createChart('temperature_chart', 'line', temp_data, 'TEMPERATURE', '\u00B0C');
+let p_chart = createChart('pressure_chart', 'line', press_data, 'PRESSURE', 'hPa');
+let h_chart = createChart('humidity_chart', 'line', humid_data, 'HUMIDITY', '%');
+let l_chart = createChart('light_chart', 'line', light_data, 'LIGHT', '%');
 
-let chart = new Chart(temperature_chart, {
-    type: 'line',
-    data: data,
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        tension: 0.3,
-        interaction: {
-            intersect: false,
-            mode: 'index',
-          },
-        plugins: {
-                tooltip: {
-                    callbacks: {
-                        title: function(context) {
-                            return "Time: " + context[0].label;
-                        },
+// Back Page
+let b_chart = createChart('band_chart', 'line', band_data, 'BANDWIDTH', 'mbps');
+let s_chart = createChart('spread_chart', 'line', spread_data, 'SPREAD', 'db');
+let f_chart = createChart('freq_chart', 'line', freq_data, 'FREQUENCY', 'MHz');
+let r_chart = createChart('rssi_chart', 'line', rssi_data, 'RSSI', 'dbm');
+let snr_chart = createChart('snr_chart', 'line', snr_data, 'SNR', 'db');
 
-                        label: function(context) {
-                            return context.dataset.label + ": " + context.parsed.y + ' \u00B0C';
-                        }
-                    }
-                },
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: true,
-                    text: 'TEMPERATURE'
-                },
-                htmlLegend: {
-                    containerID: 'legend'
-                }
+// This function creates a chart and returns it.
+function createChart(chart_id, chart_type, data, title, unit) {
+    const chart_el = document.getElementById(chart_id);
+    return new Chart(chart_el, {
+      type: chart_type,
+      data: data,
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          tension: 0.3,
+          interaction: {
+              intersect: false,
+              mode: 'index',
             },
-        scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    },
-    plugins: [htmlLegendPlugin]
-});
+          plugins: {
+                  tooltip: {
+                      callbacks: {
+                          title: function(context) {
+                              return "Time: " + context[0].label;
+                          },
 
-
-const data_chart = document.getElementById('data_chart');
-
-let d_chart = new Chart(data_chart, {
-  type: 'line',
-  data: data,
-  options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      tension: 0.3,
-      interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-      plugins: {
-              tooltip: {
-                  callbacks: {
-                      title: function(context) {
-                          return "Time: " + context[0].label;
-                      },
-
-                      label: function(context) {
-                          return context.dataset.label + ": " + context.parsed.y + ' \u00B0C';
+                          label: function(context) {
+                              return context.dataset.label + ": " + context.parsed.y + ' ' + unit;
+                          }
                       }
+                  },
+                  legend: {
+                      display: false
+                  },
+                  title: {
+                      display: true,
+                      text: title
+                  },
+                  htmlLegend: {
+                      containerID: 'legend'
                   }
               },
-              legend: {
-                  display: false
-              },
-              title: {
-                  display: true,
-                  text: 'BANDWIDTH'
-              },
-              htmlLegend: {
-                  containerID: 'legend'
-              }
-          },
-      scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  },
-  plugins: [htmlLegendPlugin]
-});
-
-
-// TODO: Integrate function that will fetch data from the server.
-// async function fetchData() {
-//     // Will send a GET request to the server in the future.
-//     const data = await fetch('data.json');
-
-// }
-
+          scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      },
+      plugins: [htmlLegendPlugin]
+    });
+}

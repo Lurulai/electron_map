@@ -39,7 +39,27 @@
         <div id="top_panel" style="display: none;">
           <div class="graphs-container">
             <div class="chart-container">
-              <canvas id="data_chart"></canvas>
+              <canvas id="band_chart"></canvas>
+            </div>
+          </div>
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="spread_chart"></canvas>
+            </div>
+          </div>
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="freq_chart"></canvas>
+            </div>
+          </div>
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="rssi_chart"></canvas>
+            </div>
+          </div>
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="snr_chart"></canvas>
             </div>
           </div>
         </div>
@@ -50,6 +70,21 @@
               <canvas id="temperature_chart"></canvas>
             </div>
           </div>
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="pressure_chart"></canvas>
+            </div>
+          </div>
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="humidity_chart"></canvas>
+            </div>
+          </div>
+          <div class="graphs-container">
+            <div class="chart-container">
+              <canvas id="light_chart"></canvas>
+            </div>
+          </div>
         </div>
 
 
@@ -58,12 +93,12 @@
         </div>
 
 
-        <!-- <span style="position: center fixed; color: black; padding-top: 80px; display: flex; justify-content: center;">
+        <span style="position: center fixed; color: black; padding-top: 80px; display: flex; justify-content: center;">
           <a href="https://leafletjs.com">Leaflet</a> 
             &copy; 
             <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>,
             <a href="https://agafonkin.com">Volodymyr Agafonkin</a>
-        </span> -->
+        </span>
 
       </div>
     </div>
@@ -74,8 +109,11 @@
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
      crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./scripts/fetch_data.js"></script>
     <script src="./scripts/chart.js"></script>
     <script src="./scripts/map.js"></script>
+    <script src="./scripts/card.js"></script>
     <script src="./scripts/functions.js"></script>
 
   </body>
